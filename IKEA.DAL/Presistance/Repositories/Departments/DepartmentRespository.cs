@@ -12,45 +12,50 @@ namespace IKEA.DAL.Presistance.Repositories.Departments
 {
     public class DepartmentRespository : IDepartmentRespository
     {
-        private readonly ApplicationDbContext dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
         public DepartmentRespository (ApplicationDbContext dbContext)
         {
           
-            dbContext = dbContext;
+            _dbContext = dbContext;
         }
         public int Add(Department entity)
         {
-            dbContext.Departments.Add(entity);
-            return dbContext.SaveChanges();
+            _dbContext.Departments.Add(entity);
+            return _dbContext.SaveChanges();
             
         }
 
         public int Delete(Department entity)
         {
-            dbContext.Departments.Remove(entity);
-            return dbContext.SaveChanges();
+            _dbContext.Departments.Remove(entity);
+            return _dbContext.SaveChanges();
         }
 
         public IEnumerable<Department> GetAll(bool WithNoTracking = true)
         {
             if (WithNoTracking)
             {
-                dbContext.Departments.AsNoTracking().ToList();
+                _dbContext.Departments.AsNoTracking().ToList();
             }
-            return dbContext.Departments.ToList();
+            return _dbContext.Departments.ToList();
+        }
+
+        public IQueryable<Department> GetAllAsQuerable()
+        {
+            return _dbContext.Departments;
         }
 
         public Department? GetById(int id)
         {
-            var Department = dbContext.Departments.Find(id);
+            var Department = _dbContext.Departments.Find(id);
             return Department;
         }
 
         public int Update(Department entity)
         {
-            dbContext.Departments.Update(entity);
-            return dbContext.SaveChanges();
+            _dbContext.Departments.Update(entity);
+            return _dbContext.SaveChanges();
         }
     }
 }

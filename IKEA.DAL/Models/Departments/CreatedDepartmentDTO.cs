@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace IKEA.DAL.Models.Departments
 {
-    public class Department:ModelBase
+   public class CreatedDepartmentDTO
     {
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
-        public string Code { get; set; }=null!;
-        [Display(Name="Creation Date ")]
-        public DateOnly CreationDate {  get; set; }
-
-
+        public string Code { get; set; } = null!;
+       
+        public DateOnly CreationDate { get; set; }
     }
 }
