@@ -13,14 +13,25 @@ namespace IKEA.BLL.Services
     {
         private readonly IDepartmentRespository _departmentRespository;
 
+       // public IEnumerable<Department> AllDepartments => throw new NotImplementedException();
+
         public DepartmentService(IDepartmentRespository departmentRespository)
         {
             _departmentRespository = departmentRespository;
         }
-        //public IEnumerable<Department> GetAllDepartments()
+        //public IEnumerable<Department> AllDepartments
         //{
-        //    throw new NotImplementedException();
+        //    //get
+        //    //{
+        //    //    // جلب جميع الأقسام من المستودع
+        //    //    var departments = _departmentRespository.GetAllAsQuerable()
+        //    //                                             .AsNoTracking()  // لتحسين الأداء
+        //    //                                             .ToList();  // تحويل الاستعلام إلى قائمة
+
+        //    //    return departments;
+        //    //}
         //}
+       // public IEnumerable<Department> AllDepartments => throw new NotImplementedException();
 
         public IEnumerable<DepartmentToReturnDTO> GetAllDepartmentsToReturn()
         {
@@ -29,18 +40,18 @@ namespace IKEA.BLL.Services
                 Id = department.Id,
                 Name = department.Name,
                 Code = department.Code,
-            
+
                 CreationDate = department.CreationDate,
             }).AsNoTracking().ToList();
             return departments;
-           
 
 
 
-            
 
-            }
-        
+
+
+        }
+
 
         public int CreateDepartment(CreatedDepartmentDTO departmentDTO)
         {
@@ -114,7 +125,13 @@ namespace IKEA.BLL.Services
 
         public IEnumerable<Department> GetAllDepartments()
         {
-            throw new NotImplementedException();
+            // استخدام المستودع للحصول على كل الأقسام من قاعدة البيانات
+            var departments = _departmentRespository.GetAllAsQuerable()
+                                                     .AsNoTracking() // لتحسين الأداء عن طريق تجنب تتبع الكيانات
+                                                     .ToList(); // تحويل النتيجة إلى قائمة
+
+            return departments; // إرجاع قائمة الأقسام
         }
+
     }
 }

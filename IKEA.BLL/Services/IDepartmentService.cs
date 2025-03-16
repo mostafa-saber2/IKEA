@@ -9,7 +9,8 @@ namespace IKEA.BLL.Services
 {
     public interface IDepartmentService
     {
-        IEnumerable<Department> GetAllDepartments();
+        //IEnumerable<Department> AllDepartments { get; }
+
         IEnumerable<DepartmentToReturnDTO> GetAllDepartmentsToReturn();
 
         DepartmentDetailsToReturnDTO? GetDepartmentById(int id);
