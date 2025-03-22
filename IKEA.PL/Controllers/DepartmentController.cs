@@ -65,6 +65,7 @@ namespace IKEA.PL.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(DepartmentEditViewMode departmentVM)
         {
             if (ModelState.IsValid)
@@ -106,6 +107,7 @@ namespace IKEA.PL.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(CreatedDepartmentDTO department)
         {
             if (ModelState.IsValid)

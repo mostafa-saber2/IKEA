@@ -3,6 +3,7 @@
     ViewData["Title"] = "Edit";
 }
 
+
 <h1>Edit Department</h1>
 <form asp-action="Edit" method="post">
 
@@ -37,5 +38,13 @@
         <a asp-controller="Department" asp-action="Index" class="btn btn-light">Cancel</a>
     </div>
 </form>
+@section ValidationScripts
+{
+
+ <partial name="_ValidationScriptsPartial" />
+
+
+}
+
 
 
