@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using IKEA.DAL.Models.Departments;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using IKEA.DAL.Models.Employees;
 
 namespace IKEA.DAL.Presistance.Data
 {
@@ -25,6 +26,7 @@ namespace IKEA.DAL.Presistance.Data
 
 
         public DbSet<Department> Departments { get; set; }
+        public DbSet <Employee> Employees { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

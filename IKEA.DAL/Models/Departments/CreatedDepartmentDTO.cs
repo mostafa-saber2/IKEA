@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace IKEA.DAL.Models.Departments
 {
-    public class Department:ModelBase
+   public class CreatedDepartmentDTO
     {
+        [Required(ErrorMessage = "Name is required!!")]
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
-        public string Code { get; set; }=null!;
-        [Display(Name="Creation Date ")]
-        public DateOnly CreationDate {  get; set; }
-
-
+        [Required(ErrorMessage ="Code is required!!")]
+        public string Code { get; set; } = null!;
+        [Display(Name="Date of Creation")]
+        public DateOnly CreationDate { get; set; }
     }
 }
